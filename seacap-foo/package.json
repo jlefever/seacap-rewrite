@@ -1,0 +1,9 @@
+{
+  "name": "@seacap/foo",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@seacap/bar": "*"
+  }
+}
