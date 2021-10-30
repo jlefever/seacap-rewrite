@@ -9,6 +9,7 @@
   "workspaces": [
     "seacap-bar",
     "seacap-foo",
+    "seacap-catalog",
     "seacap-next"
   ],
   "devDependencies": {
