@@ -1,39 +1,35 @@
-import { promises as fs } from "fs";
+import fs from "fs";
 import { basename, join } from "path";
 import sqlite3 from "sqlite3";
 
-export default class DbManager
+export default class DatabaseManager
 {
-    private readonly _dir: string;
-    private _map?: Map<string, sqlite3.Database>;
+    private readonly _databaseDir: string;
+    private readonly _databaseMap: Map<string, sqlite3.Database>;
 
-    constructor(dir: string)
+    constructor(databaseDir: string)
     {
-        this._dir = dir;
+        this._databaseDir = databaseDir;
+        this._databaseMap = createDbMap(this._databaseDir);
     }
-
-    load = async () =>
-    {
-        this._map = await createDbMap(this._dir);
-    };
 
     get = (repo: string) =>
     {
-        return this._map?.get(repo);
+        return this._databaseMap.get(repo);
     };
 
     query = async <T>(repo: string, sql: string) =>
     {
         const db = this.get(repo);
-        if (db === undefined) return undefined;
+        if (db === undefined) return null;
         return await query<T>(db, sql);
     };
 }
 
-async function scanForDbFiles(dir: string)
+function scanForDbFiles(dir: string)
 {
     const projectsDir = join(process.cwd(), dir);
-    const filenames = await fs.readdir(projectsDir);
+    const filenames = fs.readdirSync(projectsDir);
 
     return filenames.map((filename) =>
     {
@@ -41,11 +37,11 @@ async function scanForDbFiles(dir: string)
     });
 }
 
-async function createDbMap(dir: string)
+function createDbMap(dir: string)
 {
     var dbMap = new Map<string, sqlite3.Database>();
 
-    for (var path of await scanForDbFiles(dir))
+    for (var path of scanForDbFiles(dir))
     {
         const name = basename(path, ".db");
         const db = new sqlite3.Database(path, sqlite3.OPEN_READONLY);
