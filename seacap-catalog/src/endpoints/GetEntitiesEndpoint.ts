@@ -35,7 +35,7 @@ export default class GetEntitiesEndpoint implements IEndpoint
             Reply: Entity[];
         };
     
-        const options: RouteShorthandOptions = {
+        const options = {
             schema: {
                 operationId: "getEntities",
                 description: "Get entities from a repo",

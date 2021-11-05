@@ -1,7 +1,7 @@
 import fastify from "fastify";
 import fastifyHelmet from "fastify-helmet";
 import fastifySwagger from "fastify-swagger";
-import cradle from "./index";
+import { createCradle } from "./index";
 
 const CATALOG_PORT = Number(process.env.CATALOG_PORT) || 4007;
 
@@ -111,6 +111,7 @@ server.register(fastifySwagger, {
     }
 });
 
+const cradle = createCradle("./projects/");
 cradle.getEntitiesEndpoint.register(server);
 
 const startServer = async () =>

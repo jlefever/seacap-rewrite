@@ -1,21 +1,36 @@
 {
     "name": "@seacap/catalog",
+    "exports": {
+        ".": "./dist/index.js",
+        "./*": "./dist/*"
+    },
+    "typesVersions": {
+        "*": {
+            ".": [
+                "./dist/index.js"
+            ],
+            "*": [
+                "./dist/*"
+            ]
+        }
+    },
     "scripts": {
         "watch": "tsc --watch --preserveWatchOutput --pretty",
-        "dev": "cross-env NODE_ENV=development nodemon",
-        "build": "rimraf dist && tsc",
+        "dev": "nodemon --watch dist/",
+        "build": "tsc --build",
         "start": "node dist/server.js"
     },
     "dependencies": {
+        "@types/lodash": "^4.14.176",
         "awilix": "^6.0.0",
-        "cross-env": "^7.0.3",
         "fastify": "3.20.2",
         "fastify-helmet": "^5.3.2",
-        "fastify-swagger": "^4.12.5"
+        "fastify-swagger": "^4.12.5",
+        "lodash": "^4.17.21",
+        "sqlite3": "^4.2.0"
     },
     "devDependencies": {
-        "nodemon": "^2.0.14",
-        "rimraf": "^3.0.2",
-        "tsconfig-paths": "^3.11.0"
+        "@types/sqlite3": "^3.1.7",
+        "nodemon": "^2.0.14"
     }
 }

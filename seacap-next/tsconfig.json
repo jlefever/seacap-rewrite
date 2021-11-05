@@ -1,18 +1,18 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./src/",
+    "rootDir": "src",
+    "baseUrl": "src",
     "lib": [
       "dom",
-      "dom.iterable",
+      "dom.iterable"
     ],
     "noEmit": true,
-    "isolatedModules": true,
+    "isolatedModules": true
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
+    "src/**/*",
+    "next-env.d.ts"
   ],
   "exclude": [
     "node_modules"

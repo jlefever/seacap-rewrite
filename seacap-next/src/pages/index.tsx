@@ -1,7 +1,7 @@
+import Repo from "@seacap/catalog/models/Repo";
 import RepoList from "components/repoList";
-import Repo from "models/repo";
 import { GetStaticProps } from "next";
-import { getRepos } from "serverutil";
+import { getCradle } from "serverutil";
 import styled from "styled-components";
 
 interface HomePageProps
@@ -25,7 +25,7 @@ const HomePage = ({ repos }: HomePageProps) => <>
         <div className="ui container">
             <h1 className="ui huge header">Welcome!</h1>
             <p>
-                <abbr title="Software Engineering Artifact">SEA</abbr> Captain 
+                <abbr title="Software Engineering Artifact">SEA</abbr> Captain
                 helps you refactor problematic code. Select a project below to
                 get started.
             </p>
@@ -39,7 +39,7 @@ const HomePage = ({ repos }: HomePageProps) => <>
 
 export const getStaticProps: GetStaticProps = async () =>
 {
-    return { props: { repos: (await getRepos()) } };
+    return { props: { repos: (await getCradle().getRepos.call()) } };
 };
 
 export default HomePage;

@@ -1,4 +1,4 @@
-export default interface RepoBlurb
+export default interface RepoStats
 {
     numCommits: number;
     numFiles: number;

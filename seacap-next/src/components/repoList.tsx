@@ -1,5 +1,5 @@
 import MyIcon from "components/myIcon";
-import Repo from "models/repo";
+import Repo from "@seacap/catalog/models/Repo";
 import Link from "next/link";
 import React from "react";
 import GithubTagLink from "components/github/githubTagLink";
@@ -19,11 +19,11 @@ const RepoList = ({ repos }: RepoListProps) =>
                         <a className="header">{repo.displayName}</a>
                     </Link>
                     <div className="meta">
-                        <span>{repo.blurb.numCommits} commits</span>
+                        <span>{repo.stats.numCommits} commits</span>
                         <span>&#183;</span>
-                        <span>{repo.blurb.numFiles} files</span>
+                        <span>{repo.stats.numFiles} files</span>
                         <span>&#183;</span>
-                        <span>{repo.blurb.numEntities} entities</span>
+                        <span>{repo.stats.numEntities} entities</span>
                     </div>
                     <div className="description">
                         <p>{repo.description}</p>

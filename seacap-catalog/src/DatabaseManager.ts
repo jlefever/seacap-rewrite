@@ -13,6 +13,16 @@ export default class DatabaseManager
         this._databaseMap = createDbMap(this._databaseDir);
     }
 
+    getRepoNames = () =>
+    {
+        return Array.from(this._databaseMap.keys());
+    }
+
+    getRepos = (): ReadonlyMap<string, sqlite3.Database> =>
+    {
+        return this._databaseMap;
+    }
+
     get = (repo: string) =>
     {
         return this._databaseMap.get(repo);

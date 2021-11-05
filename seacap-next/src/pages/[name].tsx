@@ -1,8 +1,9 @@
 import PageTitle from "components/pageTitle";
-import Repo from "models/repo";
+import Repo from "@seacap/catalog/models/Repo";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { getRepo, getRepos } from "serverutil";
+import { getCradle } from "serverutil";
+import _ from "lodash";
 
 interface RepoPageProps
 {
@@ -26,13 +27,14 @@ export const getStaticProps: GetStaticProps = async (context) =>
 
     if (!name) return { notFound: true };
 
-    const repo = await getRepo(name as string);
+    const repos = await getCradle().getRepos.call();
+    const repo = _.find(repos, r => r.name === name)!;
     return { props: { repo } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () =>
 {
-    const repos = await getRepos();
+    const repos = await getCradle().getRepos.call();
     const paths = repos.map(r => ({ params: { name: r.name } }));
     return { paths, fallback: false };
 };
