@@ -1,8 +1,8 @@
-import MyIcon from "components/myIcon";
 import Repo from "@seacap/catalog/models/Repo";
 import Link from "next/link";
 import React from "react";
-import GithubTagLink from "components/github/githubTagLink";
+import GithubTagLink from "./github/githubTagLink";
+import MyIcon from "./myIcon";
 
 interface RepoListProps
 {

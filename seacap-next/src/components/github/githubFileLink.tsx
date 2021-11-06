@@ -1,5 +1,5 @@
-import LineRange from "models/lineRange";
 import React, { ReactNode } from "react";
+import LineRange from "../../models/lineRange";
 
 interface GithubFileLinkProps
 {

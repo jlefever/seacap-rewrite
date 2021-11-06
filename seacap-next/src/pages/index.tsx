@@ -1,8 +1,8 @@
 import Repo from "@seacap/catalog/models/Repo";
-import RepoList from "components/repoList";
 import { GetStaticProps } from "next";
-import { getCradle } from "serverutil";
 import styled from "styled-components";
+import RepoList from "../components/repoList";
+import { getCradle } from "../serverutil";
 
 interface HomePageProps
 {

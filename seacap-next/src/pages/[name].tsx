@@ -1,9 +1,9 @@
-import PageTitle from "components/pageTitle";
 import Repo from "@seacap/catalog/models/Repo";
+import _ from "lodash";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { getCradle } from "serverutil";
-import _ from "lodash";
+import PageTitle from "../components/pageTitle";
+import { getCradle } from "../serverutil";
 
 interface RepoPageProps
 {
