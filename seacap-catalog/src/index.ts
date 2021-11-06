@@ -7,6 +7,8 @@ import GetEntityIds from "./queries/GetEntityIds";
 import GetRepos from "./queries/GetRepos";
 import GetRepoStats from "./queries/GetRepoStats";
 
+const SEACAP_PROJECTS_DIR = process.env.SEACAP_PROJECTS_DIR || "../projects";
+
 export interface ICradle
 {
     databaseDir: string;
@@ -19,14 +21,14 @@ export interface ICradle
     getRepos: GetRepos;
 }
 
-export function createCradle(projectsDir: string)
+export function createCradle()
 {
     const container = awilix.createContainer<ICradle>({
         injectionMode: awilix.InjectionMode.CLASSIC
     });
     
     container.register({
-        databaseDir: awilix.asValue(projectsDir),
+        databaseDir: awilix.asValue(SEACAP_PROJECTS_DIR),
         databaseManager: awilix.asClass(DatabaseManager),
         getEntityIds: awilix.asClass(GetEntityIds),
         getEntitiesById: awilix.asClass(GetEntitiesById),

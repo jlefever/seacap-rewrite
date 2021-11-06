@@ -9,7 +9,7 @@ export function getCradle(): ICradle
         return global.myCradle as ICradle;
     }
 
-    const myCradle = createCradle("./projects/")
+    const myCradle = createCradle()
     // @ts-ignore
     global.myCradle = myCradle;
     return myCradle;

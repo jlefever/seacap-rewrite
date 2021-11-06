@@ -111,7 +111,7 @@ server.register(fastifySwagger, {
     }
 });
 
-const cradle = createCradle("./projects/");
+const cradle = createCradle();
 cradle.getEntitiesEndpoint.register(server);
 
 const startServer = async () =>
