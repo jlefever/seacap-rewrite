@@ -4,13 +4,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "semantic:build": "cd .semantic && gulp build-css build-assets",
-    "semantic:watch": "cd .semantic && npm run semantic:build && gulp watch",
-    "build-all": "npm run semantic:build && next build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@seacap/catalog": "*",
+    "fomantic-ui-css": "^2.8.8",
     "lodash": "^4.17.21",
     "next": "^11.1.2",
     "react": "^17.0.2",

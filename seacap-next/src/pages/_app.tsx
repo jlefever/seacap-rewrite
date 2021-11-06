@@ -1,4 +1,4 @@
-import "../../.semantic/dist/semantic.min.css";
+import "fomantic-ui-css/semantic.min.css"
 import "icons/vscode-dark-icons/style.css";
 import "icons/vscode-light-icons/style.css";
 import type { AppProps } from "next/app";
